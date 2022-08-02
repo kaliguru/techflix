@@ -1,0 +1,51 @@
+import 'package:flutter/material.dart';
+import '../../core/utils/styles.dart';
+
+import '../../core/utils/my_color.dart';
+
+
+class TextFieldContainer2 extends StatelessWidget {
+  final Widget child;
+  final VoidCallback onTap;
+  final Color fillColor;
+  final bool isShowSuffixView;
+
+  final String? prefixWidgetValue;
+
+  const TextFieldContainer2({
+    Key? key,
+    required this.child,
+    this.fillColor=MyColor.textFieldColor,
+    required this.onTap,
+    this.isShowSuffixView = false,
+    this.prefixWidgetValue,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        //padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 2),
+        decoration: BoxDecoration(
+          color: fillColor,
+          borderRadius: BorderRadius.circular(4),
+        ),
+        child: isShowSuffixView ?
+        IntrinsicHeight(
+          child: Row(children:
+          [
+           Container(
+             height: double.infinity,
+            alignment: Alignment.center,
+            padding: const EdgeInsets.symmetric(horizontal: 12,vertical: 5),
+           decoration: const BoxDecoration(
+             borderRadius: BorderRadius.only(topLeft: Radius.circular(4),bottomLeft:Radius.circular(4) ),
+               color: MyColor.primaryColor),
+            child: Text(prefixWidgetValue??'',style: mulishBold.copyWith(color: MyColor.colorWhite),),
+          ),Expanded(child: child)],),
+        ):child,
+      ),
+    );
+  }
+}

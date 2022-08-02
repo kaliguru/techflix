@@ -1,0 +1,23 @@
+import 'package:flutter/material.dart';
+
+import '../../../../../core/utils/my_color.dart';
+import '../.././../../../core/utils/dimensions.dart';
+import '../../../../../core/utils/styles.dart';
+
+class SubTitleWidget extends StatelessWidget {
+  final String text;
+  const SubTitleWidget({Key? key,required this.text}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+        alignment: Alignment.center,
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          style: mulishSemiBold.copyWith(
+              color: MyColor.colorWhite,
+              fontSize: Dimensions.fontDefault),
+        ));
+  }
+}
